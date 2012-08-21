@@ -22,9 +22,20 @@
 
       var self = this;
 
+      var newImages = $('img', this.$el);
+
       this.$el.html(function(i, text){
         return self.cleanText( text );
       });
+
+      $('img', this.$el).css({
+        'margin': this.config.margin
+      });
+
+      if (this.config.imgClass) {
+        $('img', this.$el).addClass(this.config.imgClass);
+      }
+
     },
 
     cleanText: function( text ) {
@@ -59,7 +70,7 @@
             textArray[i] = textArray[i];
         }
 
-        textArray[i] = '<img src="' + this.config.path + textArray[i] + this.config.suffix + '" alt="' + textArray[i] + '">';
+        textArray[i] = '<img src="' + this.config.path + this.config.prefix + textArray[i] + this.config.suffix + '" alt="' + textArray[i] + '">';
       }
 
       // join image tags back into string
@@ -83,8 +94,10 @@
   // Set defaults
   $.fn.adaminNumReplace.defaults = {
     path: '../images/small/',
+    prefix: '',
     suffix: '.png',
-    kerning: '-3px'
+    margin: '0px',
+    imgClass: ''
   };
 
 
