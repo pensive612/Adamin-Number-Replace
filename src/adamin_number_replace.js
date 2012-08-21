@@ -9,8 +9,8 @@
 (function($) {
 
   var adaminNumReplace = {
-    init: function(el) {
-      this.path = '../images/mission-numbers-sm/';
+    init: function(el, config) {
+      this.config = $.extend({}, $.fn.adaminNumReplace.defaults, config);
 
       this.el = el;
       this.$el = $(el);
@@ -23,7 +23,7 @@
       var self = this;
 
       this.$el.html(function(i, text){
-        self.cleanText( text );
+        return self.cleanText( text );
       });
     },
 
@@ -31,8 +31,15 @@
       // remove all non numbers, commas or periods
       text = text.replace(/[^\d.,!+]/g, "");
 
-      var textArray = text.split('');
+      // add class of number for verification
+      this.$el.addClass(text);
 
+      var textArray, imgText;
+
+      // convert text to array
+      textArray = text.split('');
+
+      // convert array to image tags
       for (var i = 0; i < textArray.length; i++) {
 
         switch (textArray[i]) {
@@ -52,23 +59,30 @@
             textArray[i] = textArray[i];
         }
 
-        textArray[i] = '<img src="' + this.path + textArray[i] + '-sm.png" alt="' + textArray[i] + '">';
+        textArray[i] = '<img src="' + this.config.path + textArray[i] + '-sm.png" alt="' + textArray[i] + '">';
       }
 
-      var imgText = textArray.join('');
+      // join image tags back into string
+      imgText = textArray.join('');
       
-      this.$el.html(imgText).addClass(text);
+      // pass complete text back to updateHTML
+      return imgText;
 
     }
 
   };
 
   // Collection method.
-  $.fn.adaminNumReplace = function() {
+  $.fn.adaminNumReplace = function(config) {
     var obj = Object.create(adaminNumReplace);
     return this.each(function() {
-      obj.init(this);
+      obj.init(this, config);
     });
+  };
+
+  $.fn.adaminNumReplace.defaults = {
+    path: '../images/mission-numbers-sm/',
+    kerning: '-3px'
   };
 
 

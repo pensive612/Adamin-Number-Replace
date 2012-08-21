@@ -50,13 +50,24 @@
   });
 
   test('should replace numbers with images', 1, function() {
-    var steve = this.simpleString.adaminNumReplace();
-    strictEqual( steve.find('> img:first').attr('src'), '../images/mission-numbers-sm/2-sm.png', 'Equals the first source image.' );
+    var simple = this.simpleString.adaminNumReplace();
+    strictEqual( simple.find('> img:first').attr('src'), '../images/mission-numbers-sm/2-sm.png', 'Equals the first source image.' );
   });
 
   test('should add the number to a class for verification', 1, function() {
     this.demoString.adaminNumReplace();
     ok(this.demoString.hasClass('24,995'));
+  });
+
+  test('has set custom defaults', 1, function() {
+    ok($.fn.adaminNumReplace.defaults, 'Allows user to set custom defaults');
+  });
+
+  test('allows the user to override defaults', 1, function() {
+    var demo = this.demoString.adaminNumReplace({
+      path: '../images/mission-numbers-lg/'
+    });
+    strictEqual(demo.find('> img:first').attr('src'), '../images/mission-numbers-lg/2-sm.png', 'Equals the first source image.');
   });
 
  
