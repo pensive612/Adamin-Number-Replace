@@ -22,36 +22,44 @@
       raises(block, [expected], [message])
   */
 
-  module('jQuery#awesome', {
+  module('$.fn.adaminNumReplace()', {
     setup: function() {
-      this.elems = $('#qunit-fixture').children();
+      this.simpleString = $('.simple-string');
+      this.demoString = $('.demo-string');
+      this.spaceString = $('.space-string');
+      this.dirtyString = $('.dirty-string');
+      this.completeString = $('.complete-string');
+    },
+    teardown: function() {
+      //teardown for module name
     }
   });
 
-  test('is chainable', 1, function() {
-    // Not a bad test to run on collection methods.
-    strictEqual(this.elems.awesome(), this.elems, 'should be chaninable');
+  test('is available on the jQuery object', 1, function() {
+    ok($.fn.adaminNumReplace);
   });
 
-  test('is awesome', 1, function() {
-    strictEqual(this.elems.awesome().text(), 'awesomeawesomeawesome', 'should be thoroughly awesome');
+  test('should be chainable', 1, function() {
+    strictEqual( this.simpleString.adaminNumReplace(), this.simpleString, 'It returns the jQuery Object' );
   });
 
-  module('jQuery.awesome');
-
-  test('is awesome', 1, function() {
-    strictEqual($.awesome(), 'awesome', 'should be thoroughly awesome');
+  test('should insert an image tag inside the div', 1, function() {
+      this.simpleString.adaminNumReplace();
+      // known jquery bug, forces > before img
+      ok(this.simpleString.find('> img').length, 'It should add an image tag.');
   });
 
-  module(':awesome selector', {
-    setup: function() {
-      this.elems = $('#qunit-fixture').children();
-    }
+  test('should replace numbers with images', 1, function() {
+    var steve = this.simpleString.adaminNumReplace();
+    strictEqual( steve.find('> img:first').attr('src'), '../images/mission-numbers-sm/2-sm.png', 'Equals the first source image.' );
   });
 
-  test('is awesome', 1, function() {
-    // Use deepEqual & .get() when comparing jQuery objects.
-    deepEqual(this.elems.filter(':awesome').get(), this.elems.last().get(), 'knows awesome when it sees it');
+  test('should add the number to a class for verification', 1, function() {
+    this.demoString.adaminNumReplace();
+    ok(this.demoString.hasClass('24,995'));
   });
+
+ 
+  
 
 }(jQuery));
