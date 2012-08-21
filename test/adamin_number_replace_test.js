@@ -51,7 +51,7 @@
 
   test('should replace numbers with images', 1, function() {
     var simple = this.simpleString.adaminNumReplace();
-    strictEqual( simple.find('> img:first').attr('src'), '../images/mission-numbers-sm/2-sm.png', 'Equals the first source image.' );
+    strictEqual( simple.find('> img:first').attr('src'), '../images/small/2.png', 'Equals the first source image.' );
   });
 
   test('should add the number to a class for verification', 1, function() {
@@ -65,9 +65,9 @@
 
   test('allows the user to override defaults', 1, function() {
     var demo = this.demoString.adaminNumReplace({
-      path: '../images/mission-numbers-lg/'
+      path: '../images/large/'
     });
-    strictEqual(demo.find('> img:first').attr('src'), '../images/mission-numbers-lg/2-sm.png', 'Equals the first source image.');
+    strictEqual(demo.find('> img:first').attr('src'), '../images/large/2.png', 'Equals the first source image.');
   });
 
  

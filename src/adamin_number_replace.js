@@ -59,7 +59,7 @@
             textArray[i] = textArray[i];
         }
 
-        textArray[i] = '<img src="' + this.config.path + textArray[i] + '-sm.png" alt="' + textArray[i] + '">';
+        textArray[i] = '<img src="' + this.config.path + textArray[i] + this.config.suffix + '" alt="' + textArray[i] + '">';
       }
 
       // join image tags back into string
@@ -80,8 +80,10 @@
     });
   };
 
+  // Set defaults
   $.fn.adaminNumReplace.defaults = {
-    path: '../images/mission-numbers-sm/',
+    path: '../images/small/',
+    suffix: '.png',
     kerning: '-3px'
   };
 
