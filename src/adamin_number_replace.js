@@ -28,9 +28,12 @@
         return self.cleanText( text );
       });
 
-      $('img', this.$el).css({
-        'margin': this.config.margin
-      });
+      // add imgClass if config is set
+      if (this.config.margin) {
+        $('img', this.$el).css({
+          'margin': this.config.margin
+        });
+      }
 
       // add imgClass if config is set
       if (this.config.imgClass) {
@@ -97,7 +100,7 @@
     path: '../images/small/',
     prefix: '',
     suffix: '.png',
-    margin: '0px',
+    margin: '',
     imgClass: ''
   };
 

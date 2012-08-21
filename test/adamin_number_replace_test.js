@@ -63,12 +63,6 @@
     ok($.fn.adaminNumReplace.defaults, 'Allows user to set custom defaults');
   });
 
-  test('adds appropriate styles to image', 1, function() {
-    this.simpleString.adaminNumReplace();
-    var newMargin = this.simpleString.find('img').css('margin');
-    strictEqual(newMargin, '0px', 'margin is equal to default');
-  });
-
   test('allows the user to override defaults', 3, function() {
     var simple = this.simpleString.adaminNumReplace({
       path:     '../images/large/',
@@ -77,9 +71,12 @@
       margin:   '0px -8px',
       imgClass: 'image-test-class'
     });
-    strictEqual(simple.find('> img:first').attr('src'), '../images/large/yellow-2.jpg', 'Equals the first source image.');
-    strictEqual(this.simpleString.find('> img:first').css('margin'), '0px -8px', 'margin is overridden');
-    ok(this.simpleString.find('> img:first').hasClass('image-test-class'));
+
+    var imageCollection = simple.find('> img:first');
+    
+    strictEqual(imageCollection.attr('src'), '../images/large/yellow-2.jpg', 'Equals the first source image.');
+    strictEqual(imageCollection.css('margin'), '0px -8px', 'margin is overridden');
+    ok(imageCollection.hasClass('image-test-class'));
 
   });
 
