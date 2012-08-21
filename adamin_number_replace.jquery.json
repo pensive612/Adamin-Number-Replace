@@ -1,0 +1,33 @@
+{
+  "name": "adamin_number_replace",
+  "title": "Adamin Number Replace",
+  "description": "A plugin to replace numbers with images.",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Adam L.",
+    "email": "git@adamin.net",
+    "url": "http://www.adamin.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github/pensive612/adamin_number_replace.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "/blob/master/LICENSE-MIT"
+    },
+    {
+      "type": "GPL",
+      "url": "/blob/master/LICENSE-GPL"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">= 1.6"
+  },
+  "keywords": []
+}
