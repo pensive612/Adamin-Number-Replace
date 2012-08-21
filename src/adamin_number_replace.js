@@ -32,6 +32,7 @@
         'margin': this.config.margin
       });
 
+      // add imgClass if config is set
       if (this.config.imgClass) {
         $('img', this.$el).addClass(this.config.imgClass);
       }

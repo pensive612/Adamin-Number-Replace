@@ -65,7 +65,8 @@
 
   test('adds appropriate styles to image', 1, function() {
     this.simpleString.adaminNumReplace();
-    strictEqual(this.simpleString.find('> img').css('margin'), '0px', 'margin is equal to default');
+    var newMargin = this.simpleString.find('img').css('margin');
+    strictEqual(newMargin, '0px', 'margin is equal to default');
   });
 
   test('allows the user to override defaults', 3, function() {
