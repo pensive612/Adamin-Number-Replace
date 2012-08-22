@@ -29,13 +29,13 @@ jQuery(function($) {
 ```
 
 ## Documentation
-This is a jQuery plugin to replace numbers in a <div> or container with corresponding images. 
+This is a jQuery plugin to replace numbers in a ```<div>``` or container with corresponding images. 
 
-This is only for particular use cases, and of course I'd recommend doing any of your styling with CSS techniques instead.  But alas, I ran into a situation where that wasn't an option.  And I'm sure if you're reading this, you might be in a similar situation.
+This is only for particular use cases, and of course I'd recommend doing any of your styling with CSS techniques instead.  But alas, I ran into a situation where custom number images were required.  And I'm sure if you're reading this, you might be in a similar situation.
 
 Use the above code and feel free to remove any configuration options you don't need.  Odds are you will need to set the path.  But the rest have sensible defaults.  A list of defaults is available in the Examples section.
 
-If you are concerned with SEO for whatever reason.  The plugin will insert the number back into the element and implement [Nicolas Gallagher's Image Replacement CSS technique][IR].
+If you are concerned with SEO.  The plugin will insert the number back into the element and implement [Nicolas Gallagher's Image Replacement CSS technique][IR] to hide the text.
 
 [ir]: http://nicolasgallagher.com/another-css-image-replacement-technique/
 
@@ -58,7 +58,7 @@ In addition to numbers, the plugin currently supports the following names:
 - slash
 - star
 
-Also, keep in mind that this will parse all text in the container, so try to limit the container to just the numbers you want to replace.  Whether that be a 'div' or 'span' etc...
+Also, keep in mind that this will parse all text in the container, so try to limit the container to just the numbers you want to replace.  Whether that be a ```div``` or ```span``` etc...
 
 ## Examples
 _(Coming soon)_
