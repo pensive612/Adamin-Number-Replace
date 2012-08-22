@@ -1,4 +1,4 @@
-/*! Adamin Number Replace - v0.1.0 - 2012-08-21
+/*! Adamin Number Replace - v0.1.0 - 2012-08-22
 * Copyright (c) 2012 Adam L.; Licensed MIT, GPL */
 
 (function($) {

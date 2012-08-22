@@ -63,7 +63,7 @@
     ok($.fn.adaminNumReplace.defaults, 'Allows user to set custom defaults');
   });
 
-  test('allows the user to override defaults', 2, function() {
+  test('allows the user to override defaults', 6, function() {
     var simple = this.simpleString.adaminNumReplace({
       path:     '../images/large/',
       prefix:   'yellow-',
@@ -74,10 +74,12 @@
 
     var imageCollection = simple.find('> img:first');
     
-    strictEqual(imageCollection.attr('src'), '../images/large/yellow-2.jpg', 'Equals the first source image.');
-    // strictEqual(imageCollection.css('margin'), '0px -8px', 'margin is overridden');
-    ok(imageCollection.hasClass('image-test-class'));
-
+    strictEqual(imageCollection.attr('src'), '../images/large/yellow-2.jpg', 'Source image path is correct.');
+    ok(imageCollection.hasClass('image-test-class'), 'Class is properly added.');
+    strictEqual(imageCollection.css('margin-top'), '0px', 'top margin is overridden');
+    strictEqual(imageCollection.css('margin-bottom'), '0px', 'bottom margin is overridden');
+    strictEqual(imageCollection.css('margin-left'), '-8px', 'left margin is overridden');
+    strictEqual(imageCollection.css('margin-right'), '-8px', 'right margin is overridden');
   });
 
   test('should contain span for search engines', 2, function() {
