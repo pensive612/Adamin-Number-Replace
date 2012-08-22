@@ -57,7 +57,7 @@
 
     cleanText: function( text ) {
       // remove all non numbers, commas or periods
-      var cleanText = text.replace(/[^\d.,!+]/g, "");
+      var cleanText = text.replace(/[^\d\$.,!+-\:\#\%\?\/\*]/g, "");
 
       var textArray, imgText;
 
@@ -80,9 +80,34 @@
           case "+":
             textArray[i] = 'plus';
             break;
+          case "-":
+            textArray[i] = 'dash';
+            break;
+          case "+":
+            textArray[i] = 'dollar';
+            break;
+          case ":":
+            textArray[i] = 'colon';
+            break;
+          case "#":
+            textArray[i] = 'hash';
+            break;
+          case "#":
+            textArray[i] = 'percent';
+            break;
+          case "?":
+            textArray[i] = 'question';
+            break;
+          case "/":
+            textArray[i] = 'slash';
+            break;
+          case "*":
+            textArray[i] = 'star';
+            break;
           default:
             textArray[i] = textArray[i];
         }
+
 
         textArray[i] = '<img src="' + this.config.path + this.config.prefix + textArray[i] + this.config.suffix + '" alt="' + textArray[i] + '">';
       }
