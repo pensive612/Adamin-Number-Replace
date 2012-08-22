@@ -24,9 +24,16 @@
 
       var newImages = $('img', this.$el);
 
-      this.$el.html(function(i, text){
-        return self.cleanText( text );
-      });
+      var contentText = this.$el.html();
+
+      var cleanTextValues = this.cleanText( contentText );
+
+      this.$el.
+        html(function(i, text){
+          return cleanTextValues[0];
+        }).
+        addClass(cleanTextValues[1])
+        ;
 
       // add imgClass if config is set
       if (this.config.margin) {
@@ -40,14 +47,22 @@
         $('img', this.$el).addClass(this.config.imgClass);
       }
 
+      // add text into element and Nicolas Gallagher IR Technique
+      $('<span>', {
+        text: cleanTextValues[1]
+      })
+        .css({
+          'font': '0/0 a',
+          'text-shadow': 'none',
+          'color': 'transparent'
+      })
+        .appendTo(this.$el);
+
     },
 
     cleanText: function( text ) {
       // remove all non numbers, commas or periods
-      text = text.replace(/[^\d.,!+]/g, "");
-
-      // add class of number for verification
-      this.$el.addClass(text);
+      var cleanText = text.replace(/[^\d.,!+]/g, "");
 
       var textArray, imgText;
 
@@ -81,7 +96,7 @@
       imgText = textArray.join('');
       
       // pass complete text back to updateHTML
-      return imgText;
+      return [imgText, cleanText];
 
     }
 
