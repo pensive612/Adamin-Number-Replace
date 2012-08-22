@@ -82,9 +82,11 @@
 
   test('should contain span for search engines', 2, function() {
     this.simpleString.adaminNumReplace();
-    // known jquery bug, forces > before img
-    ok(this.simpleString.children('span').length, 'It should add a span tag.');
-    strictEqual(this.simpleString.children('span').text(), '24', 'It should equal 24');
+    
+    var childSpan = this.simpleString.children('span');
+
+    ok(childSpan.length, 'It should add a span tag.');
+    strictEqual(childSpan.text(), '24', 'It should equal 24');
   });
 
 
