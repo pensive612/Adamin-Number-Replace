@@ -22,11 +22,11 @@
 
       var self = this;
 
-      var newImages = $('img', this.$el);
+      var originalText = this.$el.html();
 
-      var contentText = this.$el.html();
+      var cleanTextValues = this.cleanText( originalText );
 
-      var cleanTextValues = this.cleanText( contentText );
+      var createdImages = $('img', this.$el);
 
       this.$el.
         html(function(i, text){
@@ -47,24 +47,25 @@
         $('img', this.$el).addClass(this.config.imgClass);
       }
 
-      // add text into element and Nicolas Gallagher IR Technique
+      // add text into element
       $('<span>', {
         text: cleanTextValues[1]
       })
+        // Nicolas Gallagher IR Technique
         .css({
           'font': '0/0 a',
           'text-shadow': 'none',
           'color': 'transparent'
-      })
+        })
         .appendTo(this.$el);
-
     },
 
     cleanText: function( text ) {
+      
+      var textArray, imgText;
+
       // remove all non numbers, commas or periods
       var cleanText = text.replace(/[^\d\$.,!+-\:\#\%\?\/\*]/g, "");
-
-      var textArray, imgText;
 
       // convert text to array
       textArray = text.split('');
