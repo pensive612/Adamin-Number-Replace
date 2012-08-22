@@ -5,17 +5,25 @@ A plugin to replace numbers with images.
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/pensive612/adamin_number_replace/master/dist/adamin_number_replace.min.js
-[max]: https://raw.github.com/pensive612/adamin_number_replace/master/dist/adamin_number_replace.js
+[min]: https://raw.github.com/pensive612/Adamin-Number-Replace/master/dist/adamin_number_replace.min.js
+[max]: https://raw.github.com/pensive612/Adamin-Number-Replace/master/dist/adamin_number_replace.js
 
 In your web page:
+
+(shown is all of the options you can modify)
 
 ```html
 <script src="jquery.js"></script>
 <script src="dist/adamin_number_replace.min.js"></script>
 <script>
 jQuery(function($) {
-  $.awesome(); // "awesome"
+  $('element').adaminNumReplace({
+    path: 'path/to/images/', // you will want to set this one
+    prefix: '', // add a prefix to the filename | default is ''
+    suffix: '', // add a suffix or change extension | default is '.png'
+    margin: '0px -4px', // adjust kerning with positive or negative margins
+    imgClass: 'class-name', // set a class on each image | default is ''
+  });
 });
 </script>
 ```
