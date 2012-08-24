@@ -1,4 +1,4 @@
-/*! Adamin Number Replace - v0.1.0 - 2012-08-22
+/*! Adamin Number Replace - v0.1.0 - 2012-08-24
 * Copyright (c) 2012 Adam L.; Licensed MIT, GPL */
 
 (function($) {
@@ -40,6 +40,13 @@
       // add imgClass if config is set
       if (this.config.imgClass) {
         $('img', this.$el).addClass(this.config.imgClass);
+      }
+
+      // add inline display if config is set
+      if (this.config.inline) {
+        $('img', this.$el).css({
+          'display': 'inline'
+        });
       }
 
       // add text into element
@@ -137,7 +144,8 @@
     prefix: '',
     suffix: '.png',
     margin: '',
-    imgClass: ''
+    imgClass: '',
+    inline: false
   };
 
 

@@ -63,12 +63,11 @@
     ok($.fn.adaminNumReplace.defaults, 'Allows user to set custom defaults');
   });
 
-  test('allows the user to override defaults', 6, function() {
+  test('allows the user to override defaults', 2, function() {
     var simple = this.simpleString.adaminNumReplace({
       path:     '../images/large/',
       prefix:   'yellow-',
       suffix:   '.jpg',
-      margin:   '0px -8px',
       imgClass: 'image-test-class'
     });
 
@@ -76,11 +75,8 @@
     
     strictEqual(imageCollection.attr('src'), '../images/large/yellow-2.jpg', 'Source image path is correct.');
     ok(imageCollection.hasClass('image-test-class'), 'Class is properly added.');
-    strictEqual(imageCollection.css('margin-top'), '0px', 'top margin is overridden');
-    strictEqual(imageCollection.css('margin-bottom'), '0px', 'bottom margin is overridden');
-    strictEqual(imageCollection.css('margin-left'), '-8px', 'left margin is overridden');
-    strictEqual(imageCollection.css('margin-right'), '-8px', 'right margin is overridden');
   });
+
 
   test('should contain span for search engines', 2, function() {
     this.simpleString.adaminNumReplace();
@@ -92,7 +88,29 @@
   });
 
 
+  test('should allow css override of margin', 4, function() {
 
+    var simple = this.simpleString.adaminNumReplace({
+      margin:   '0px -8px'
+    });
+
+    var imageCollection = simple.find('> img:first');
+
+    strictEqual(imageCollection.css('margin-top'), '0px', 'top margin is overridden');
+    strictEqual(imageCollection.css('margin-bottom'), '0px', 'bottom margin is overridden');
+    strictEqual(imageCollection.css('margin-left'), '-8px', 'left margin is overridden');
+    strictEqual(imageCollection.css('margin-right'), '-8px', 'right margin is overridden');
+  });
+
+  test('should allow css override of inline', 1, function() {
+    var simple = this.simpleString.adaminNumReplace({
+      inline: true
+    });
+
+    var imageCollection = simple.find('> img:first');
+
+    strictEqual(imageCollection.css('display'), 'inline', 'images have inline style of display: inline');
+  });
  
   
 

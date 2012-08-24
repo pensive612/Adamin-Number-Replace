@@ -47,6 +47,13 @@
         $('img', this.$el).addClass(this.config.imgClass);
       }
 
+      // add inline display if config is set
+      if (this.config.inline) {
+        $('img', this.$el).css({
+          'display': 'inline'
+        });
+      }
+
       // add text into element
       $('<span>', {
         text: cleanTextValues[1]
@@ -142,7 +149,8 @@
     prefix: '',
     suffix: '.png',
     margin: '',
-    imgClass: ''
+    imgClass: '',
+    inline: false
   };
 
 
