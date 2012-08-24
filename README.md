@@ -8,9 +8,6 @@ Download the [production version][min] or the [development version][max].
 [min]: https://raw.github.com/pensive612/Adamin-Number-Replace/master/dist/adamin_number_replace.min.js
 [max]: https://raw.github.com/pensive612/Adamin-Number-Replace/master/dist/adamin_number_replace.js
 
-In your web page:
-
-(shown is all of the options you can modify)
 
 ```html
 <script src="jquery.js"></script>
@@ -18,7 +15,7 @@ In your web page:
 <script>
 jQuery(function($) {
   $('element').adaminNumReplace({
-    path: 'path/to/images/', // you will want to set this one
+    path: 'path/to/number-images/', // you will want to set this one
     prefix: '', // add a prefix to the filename
     suffix: '', // add a suffix or change extension
     margin: '0px -4px', // adjust kerning with positive or negative margins
