@@ -1,4 +1,4 @@
-/*! Adamin Number Replace - v0.1.0 - 2012-08-24
+/*! Adamin Number Replace - v0.1.0 - 2012-09-07
 * Copyright (c) 2012 Adam L.; Licensed MIT, GPL */
 
 (function($) {
@@ -67,10 +67,10 @@
       var textArray, imgText;
 
       // remove all non numbers, commas or periods
-      var cleanText = text.replace(/[^\d\$.,!+-\:\#\%\?\/\*]/g, "");
+      var cleanText = text.replace(/[^\d\$\.\,\!\+\-\#\%\:\?\*]/gi, "");
 
       // convert text to array
-      textArray = text.split('');
+      textArray = cleanText.split('');
 
       // convert array to image tags
       for (var i = 0; i < textArray.length; i++) {

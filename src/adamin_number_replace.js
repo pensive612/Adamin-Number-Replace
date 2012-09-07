@@ -72,10 +72,10 @@
       var textArray, imgText;
 
       // remove all non numbers, commas or periods
-      var cleanText = text.replace(/[^\d\$.,!+-\:\#\%\?\/\*]/g, "");
+      var cleanText = text.replace(/[^\d\$\.\,\!\+\-\#\%\:\?\*]/gi, "");
 
       // convert text to array
-      textArray = text.split('');
+      textArray = cleanText.split('');
 
       // convert array to image tags
       for (var i = 0; i < textArray.length; i++) {
