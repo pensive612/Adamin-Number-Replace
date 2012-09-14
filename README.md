@@ -58,7 +58,7 @@ In addition to numbers, the plugin currently supports the following names:
 Also, keep in mind that this will parse all text in the container, so try to limit the container to just the numbers you want to replace.  Whether that be a ```div``` or ```span``` etc...
 
 ## Examples
-_(Coming soon)_
+Example numeric images will be included soon.
 
 ## Release History
 _(Nothing yet)_
