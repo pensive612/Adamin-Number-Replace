@@ -1,29 +1,41 @@
-/*! Adamin Number Replace - v0.1.0 - 2012-09-07
+/*! Adamin Number Replace - v0.1.0 - 2012-10-10
 * Copyright (c) 2012 Adam L.; Licensed MIT, GPL */
 
-(function($) {
+(function(window, document, $, undefined) {
 
-  var adaminNumReplace = {
-    init: function(el, config) {
-      this.config = $.extend({}, $.fn.adaminNumReplace.defaults, config);
+  var Plugin = function(elem, options) {
+    this.elem = elem;
+    this.$elem = $(elem);
+    this.options = options;
+    this.metadata = this.$elem.data('adamin-options');
+  };
 
-      this.el = el;
-      this.$el = $(el);
+  Plugin.prototype = {
+    defaults: {
+      path: '../images/small/',
+      prefix: '',
+      suffix: '.png',
+      margin: '',
+      imgClass: '',
+      inline: false
+    },
+    init: function() {
+      this.config = $.extend({}, this.defaults, this.options, this.metadata);
 
       this.updateHTML();
+
+      return this;
     },
-
     updateHTML: function() {
-
       var self = this;
 
-      var originalText = this.$el.html();
+      var originalText = this.$elem.html();
 
       var cleanTextValues = this.cleanText( originalText );
 
-      var createdImages = $('img', this.$el);
+      var createdImages = $('img', this.$elem);
 
-      this.$el.
+      this.$elem.
         html(function(i, text){
           return cleanTextValues[0];
         }).
@@ -32,19 +44,19 @@
 
       // add imgClass if config is set
       if (this.config.margin) {
-        $('img', this.$el).css({
+        $('img', this.$elem).css({
           'margin': this.config.margin
         });
       }
 
       // add imgClass if config is set
       if (this.config.imgClass) {
-        $('img', this.$el).addClass(this.config.imgClass);
+        $('img', this.$elem).addClass(this.config.imgClass);
       }
 
       // add inline display if config is set
       if (this.config.inline) {
-        $('img', this.$el).css({
+        $('img', this.$elem).css({
           'display': 'inline'
         });
       }
@@ -59,7 +71,7 @@
           'text-shadow': 'none',
           'color': 'transparent'
         })
-        .appendTo(this.$el);
+        .appendTo(this.$elem);
     },
 
     cleanText: function( text ) {
@@ -130,23 +142,14 @@
 
   };
 
-  // Collection method.
-  $.fn.adaminNumReplace = function(config) {
-    var obj = Object.create(adaminNumReplace);
+  Plugin.defaults = Plugin.prototype.defaults;
+
+  $.fn.adaminNumReplace = function(options) {
     return this.each(function() {
-      obj.init(this, config);
+      new Plugin(this, options).init();
     });
   };
 
-  // Set defaults
-  $.fn.adaminNumReplace.defaults = {
-    path: '../images/small/',
-    prefix: '',
-    suffix: '.png',
-    margin: '',
-    imgClass: '',
-    inline: false
-  };
+  window.Plugin = Plugin;
 
-
-}(jQuery));
+}(window, document, jQuery));

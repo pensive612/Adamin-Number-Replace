@@ -59,10 +59,6 @@
     ok(this.demoString.hasClass('24,995'));
   });
 
-  test('has set custom defaults', 1, function() {
-    ok($.fn.adaminNumReplace.defaults, 'Allows user to set custom defaults');
-  });
-
   test('allows the user to override defaults', 2, function() {
     var simple = this.simpleString.adaminNumReplace({
       path:     '../images/large/',
@@ -76,7 +72,6 @@
     strictEqual(imageCollection.attr('src'), '../images/large/yellow-2.jpg', 'Source image path is correct.');
     ok(imageCollection.hasClass('image-test-class'), 'Class is properly added.');
   });
-
 
   test('should contain span for search engines', 2, function() {
     this.simpleString.adaminNumReplace();
