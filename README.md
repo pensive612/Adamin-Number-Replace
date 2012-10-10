@@ -2,6 +2,8 @@
 
 A jQuery plugin to replace numbers with images.
 
+[![Build Status](https://secure.travis-ci.org/pensive612/Adamin-Number-Replace.png)](http://travis-ci.org/pensive612/Adamin-Number-Replace)
+
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
